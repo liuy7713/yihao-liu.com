@@ -126,13 +126,25 @@ a:hover { text-decoration-color: currentColor; text-decoration-thickness: 2px; }
 }
 .theme-btn:hover { border-color: var(--on-plate-soft); }
 
+.mast-id {
+  display: flex; flex-direction: column-reverse; align-items: flex-start; gap: 1.25rem;
+  margin-top: clamp(1.5rem, 5vw, 3.5rem);
+}
+@media (min-width: 720px) {
+  .mast-id { flex-direction: row; align-items: flex-end; justify-content: space-between; gap: 2rem; }
+}
+.portrait {
+  display: block; flex: none; width: 5.5rem; height: 5.5rem; object-fit: cover;
+  border-radius: 3px; box-shadow: 0 0 0 1px var(--plate-line);
+  background: var(--plate-line);
+}
+@media (min-width: 720px) { .portrait { width: clamp(6rem, 9.5vw, 7.75rem); height: clamp(6rem, 9.5vw, 7.75rem); } }
 .name {
   font-family: var(--serif);
   font-weight: 300;
   font-size: var(--fs-name);
   line-height: 0.86;
   letter-spacing: -0.035em;
-  margin-top: clamp(1.5rem, 5vw, 3.5rem);
   margin-left: -0.04em;
 }
 .mast-grid {
@@ -334,6 +346,12 @@ main:focus { outline: none; }
 .spec dt { font-family: var(--mono); font-size: var(--fs-xs); letter-spacing: 0.04em; color: var(--ink-soft); padding-top: 0.1rem; }
 .spec dd { font-variant-numeric: tabular-nums; min-width: 0; }
 
+.fig { display: grid; gap: 0.75rem; max-width: 48rem; }
+.fig-imgs { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 0.875fr); gap: 0.75rem; align-items: start; }
+.fig img { display: block; width: 100%; height: auto; border-radius: 2px; box-shadow: 0 0 0 1px var(--line); background: #fff; }
+.fig figcaption { font-family: var(--sans); font-size: var(--fs-s); line-height: 1.5; color: var(--ink-soft); max-width: 60ch; }
+.fig figcaption b { font-weight: 600; color: var(--ink); }
+
 /* ---------- Publications ---------- */
 .pubs { display: grid; gap: 1.5rem; }
 .pub { display: grid; grid-template-columns: minmax(0, 1fr); gap: 0.4rem 2rem; }
@@ -427,6 +445,7 @@ main:focus { outline: none; }
   "url": "https://yihao-liu.com/",
   "email": "mailto:yihao.liu@imperial.ac.uk",
   "jobTitle": "MSc student and visiting researcher",
+  "image": "https://yihao-liu.com/images/yihao-liu-800.jpg",
   "description": "Yihao Liu, MSc student and visiting researcher at Imperial College London, working on multimorbidity, prescription data and mortality risk.",
   "affiliation": {
     "@type": "Organization",
@@ -459,6 +478,7 @@ main:focus { outline: none; }
     "fr"
   ],
   "sameAs": [
+    "https://orcid.org/0009-0003-4671-7365",
     "https://scholar.google.com/citations?user=jnAepbcAAAAJ",
     "https://www.linkedin.com/in/yihao-liu/",
     "https://github.com/liuy7713"
@@ -482,7 +502,10 @@ main:focus { outline: none; }
       <button type="button" class="theme-btn" id="theme-btn" aria-label="Switch colour theme">Dark</button>
     </div>
 
-    <h1 class="name">Yihao Liu</h1>
+    <div class="mast-id">
+      <h1 class="name">Yihao Liu</h1>
+      <img class="portrait" src="images/yihao-liu-400.jpg" srcset="images/yihao-liu-400.jpg 400w, images/yihao-liu-800.jpg 800w" sizes="(min-width: 720px) 7.75rem, 5.5rem" width="400" height="400" alt="Portrait of Yihao Liu">
+    </div>
 
     <div class="mast-grid">
       <div>
@@ -491,6 +514,7 @@ main:focus { outline: none; }
       </div>
       <ul class="contact" aria-label="Links">
         <li><a href="https://scholar.google.com/citations?user=jnAepbcAAAAJ" target="_blank" rel="noopener">Google Scholar <span class="arrow" aria-hidden="true">↗</span></a></li>
+        <li><a href="https://orcid.org/0009-0003-4671-7365" target="_blank" rel="noopener">ORCID <span class="arrow" aria-hidden="true">↗</span></a></li>
         <li><a href="https://github.com/liuy7713" target="_blank" rel="noopener">GitHub <span class="arrow" aria-hidden="true">↗</span></a></li>
         <li><a href="https://www.linkedin.com/in/yihao-liu/" target="_blank" rel="noopener">LinkedIn <span class="arrow" aria-hidden="true">↗</span></a></li>
         <li><a href="Yihao-Liu-CV.pdf" target="_blank" rel="noopener">CV (PDF) <span class="arrow" aria-hidden="true">↗</span></a></li>
@@ -511,6 +535,7 @@ main:focus { outline: none; }
         <p>I am an MSc student in Health Data Analytics and Machine Learning at Imperial College London, funded by a School of Public Health Masters Scholarship. Since October 2025 I have also been a visiting researcher in the Department of Epidemiology and Biostatistics, supervised by Prof. Marc Chadeau-Hyam and Dr Dragana Vuckovic. There I am developing a multimorbidity index from UK Biobank prescription records to predict all-cause mortality.</p>
         <p>I hold a BSc in Mathematics and Computer Science from École Polytechnique (2026, cum laude), which included an exchange semester at King’s College London. In summer 2025 I was a research intern at King’s, working on quality assurance for fluoroscopy.</p>
         <p>Languages: English, Mandarin, Portuguese, French.</p>
+        <p>School prizes: gold medal and best in year, UKMT Senior Mathematics Challenge (2022); gold award, British Physics Olympiad Senior Physics Challenge (2022).</p>
       </div>
 
       <figure class="path" id="path" aria-labelledby="path-title">
@@ -596,6 +621,7 @@ main:focus { outline: none; }
           <li><b>Benchmark</b><span>Random survival forests, a non-parametric comparator that allows for non-linear effects and interactions</span></li>
           <li><b>Score</b><span>An integer risk score built from the selected categories</span></li>
         </ol>
+        <p class="withheld">Results to follow on submission.</p>
         <p class="people">Supervisors: Prof. Marc Chadeau-Hyam and Dr Dragana Vuckovic. With Dr Rin Wada. Developed from my bachelor’s thesis.</p>
       </article>
 
@@ -607,8 +633,15 @@ main:focus { outline: none; }
         <h3 id="h-xray">Automated spatial‑resolution measurement for fluoroscopy quality assurance</h3>
         <div class="prose">
           <p>Routine quality assurance of fluoroscopy systems includes imaging a resolution test phantom and reading the system’s limiting spatial resolution by eye, which is slow and varies between observers.</p>
-          <p>I wrote a MATLAB pipeline that automates this reading for the Leeds TOR 18FG phantom, at about one second per image. Its estimates of limiting resolution were about 50% higher in line pairs per millimetre (lp/mm) than observers’ visual readings: it placed the limit at finer bar groups than observers reported by eye. They were checked against measurements made in ImageJ.</p>
+          <p>I wrote a MATLAB pipeline that automates this reading for the Leeds TOR 18FG phantom, at about one second per image. On images from a clinical fluoroscopy system it placed the limiting resolution at 2.13 to 2.21 line pairs per millimetre (lp/mm). On the reference image, a manual line-profile analysis in ImageJ gave 2.00 lp/mm against the pipeline’s 2.13. These limits were 43 to 50% higher than those reported by observers reading the same images by eye, and varied less.</p>
         </div>
+        <figure class="fig">
+          <div class="fig-imgs">
+            <img src="images/xray-rim.jpg" width="760" height="760" loading="lazy" alt="X-ray image of the circular TOR 18FG test phantom. A green circle drawn by the pipeline traces the phantom rim; the rectangular resolution plate with its rows of bar patterns sits near the centre.">
+            <img src="images/xray-plate.png" width="692" height="791" loading="lazy" alt="The phantom’s resolution plate after rotation correction. Red boxes outline the 21 bar-pattern groups, arranged in three rows, with the bars becoming finer from left to right.">
+          </div>
+          <figcaption><b>Left:</b> phantom rim located by the pipeline (green). <b>Right:</b> resolution plate after rotation correction, with the 21 bar-pattern regions in which contrast is measured (red).</figcaption>
+        </figure>
         <ol class="steps" aria-label="Pipeline">
           <li><b>Input</b><span>DICOM images, preprocessed before analysis</span></li>
           <li><b>Localisation</b><span>Phantom rim located by Canny edge detection and a Hough transform</span></li>
