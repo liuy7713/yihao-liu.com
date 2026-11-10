@@ -3,7 +3,10 @@
 Static site served by GitHub Pages. Plain HTML/CSS/JS, no build step.
 
 - `index.html` — the whole site
-- `cv.pdf` — web version of the CV (no phone number, no unpublished results)
+- `Yihao-Liu-CV.pdf` — web version of the CV (no phone number, no unpublished results). `cv.pdf` is an identical copy kept so old links still work; replace both together.
+- `og-image.png` — link-preview card; `favicon.*`, `apple-touch-icon.png` — icons
+- `fonts/` — self-hosted Spectral and Atkinson Hyperlegible (Latin subset, SIL Open Font License)
+- `sitemap.xml` — update `lastmod` when content changes
 
 ## Copyright
 

@@ -3,12 +3,19 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Yihao Liu</title>
+<title>Yihao Liu | Health data science, Imperial College London</title>
 <meta name="description" content="Yihao Liu, MSc student and visiting researcher at Imperial College London, working on multimorbidity, prescription data and mortality risk.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,500;1,400&family=Atkinson+Hyperlegible+Next:wght@400;500;600&family=Atkinson+Hyperlegible+Mono:wght@400;500&display=swap">
+<link rel="preload" href="fonts/spectral-300.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/spectral-400.woff2" as="font" type="font/woff2" crossorigin>
 <style>
+/* Self-hosted fonts, Latin subset (SIL Open Font License) */
+@font-face { font-family: "Spectral"; font-style: normal; font-weight: 300; font-display: swap; src: url(fonts/spectral-300.woff2) format("woff2"); }
+@font-face { font-family: "Spectral"; font-style: normal; font-weight: 400; font-display: swap; src: url(fonts/spectral-400.woff2) format("woff2"); }
+@font-face { font-family: "Spectral"; font-style: normal; font-weight: 500; font-display: swap; src: url(fonts/spectral-500.woff2) format("woff2"); }
+@font-face { font-family: "Spectral"; font-style: italic; font-weight: 400; font-display: swap; src: url(fonts/spectral-400-italic.woff2) format("woff2"); }
+@font-face { font-family: "Atkinson Hyperlegible Next"; font-style: normal; font-weight: 400 600; font-display: swap; src: url(fonts/atkinson-next.woff2) format("woff2"); }
+@font-face { font-family: "Atkinson Hyperlegible Mono"; font-style: normal; font-weight: 400 500; font-display: swap; src: url(fonts/atkinson-mono.woff2) format("woff2"); }
+
 /*
   Direction: "One ink". The whole site is printed in a single cobalt ink on porcelain,
   the blue-and-white shared by Jingdezhen porcelain and Portuguese azulejos, and by blue-base X-ray film.
@@ -35,7 +42,7 @@
   --han: "Noto Serif SC", "Songti SC", "SimSun", serif;
 
   /* scale */
-  --fs-name: clamp(4.25rem, 18vw, 12rem);
+  --fs-name: clamp(4rem, 15vw, 9rem);
   --fs-xl: clamp(1.5rem, 1.05rem + 1.7vw, 2.25rem);
   --fs-l: clamp(1.3125rem, 1.15rem + 0.6vw, 1.625rem);
   --fs-body: 1.1875rem;
@@ -101,14 +108,15 @@ a:hover { text-decoration-color: currentColor; text-decoration-thickness: 2px; }
 .mast-top {
   display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between;
   gap: 0.75rem 1.5rem;
-  padding-block: 1.25rem;
+  padding-block: 0.5rem;
   font-family: var(--sans); font-size: var(--fs-s);
   color: var(--on-plate-soft);
 }
 .mast-top { flex-wrap: nowrap; }
-.mast-nav { display: flex; flex-wrap: wrap; gap: 0.25rem 1.25rem; }
-.theme-btn { flex: none; }
-.mast-nav a { color: var(--on-plate-soft); text-decoration: none; }
+.mast-nav { display: flex; flex-wrap: wrap; gap: 0 1.25rem; }
+.theme-btn { flex: none; position: relative; }
+.theme-btn::after, .copy-btn::after { content: ""; position: absolute; inset: -8px -4px; }
+.mast-nav a { color: var(--on-plate-soft); text-decoration: none; display: inline-block; padding-block: 0.7rem; }
 .mast-nav a:hover { color: var(--on-plate); text-decoration: underline; text-decoration-thickness: 1px; }
 .theme-btn {
   font: 500 var(--fs-xs)/1 var(--mono); letter-spacing: 0.06em; text-transform: uppercase;
@@ -124,14 +132,14 @@ a:hover { text-decoration-color: currentColor; text-decoration-thickness: 2px; }
   font-size: var(--fs-name);
   line-height: 0.86;
   letter-spacing: -0.035em;
-  margin-top: clamp(2.5rem, 9vw, 6.5rem);
+  margin-top: clamp(1.5rem, 5vw, 3.5rem);
   margin-left: -0.04em;
 }
 .mast-grid {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
   gap: 2.25rem;
-  padding-block: clamp(2rem, 5vw, 3.25rem) clamp(2.75rem, 7vw, 5rem);
+  padding-block: clamp(1.5rem, 3.5vw, 2.5rem) clamp(2.25rem, 5vw, 3.5rem);
 }
 @media (min-width: 900px) {
   .mast-grid { grid-template-columns: minmax(0, 7fr) minmax(0, 4fr); gap: 4rem; align-items: end; }
@@ -153,20 +161,21 @@ a:hover { text-decoration-color: currentColor; text-decoration-thickness: 2px; }
 .contact li:last-child { border-bottom: 1px solid var(--plate-line); }
 .contact a {
   display: flex; justify-content: space-between; align-items: baseline;
-  padding-block: 0.6rem; text-decoration: none;
+  padding-block: 0.65rem; text-decoration: none;
 }
 .contact a:hover .arrow { transform: translate(2px, -2px); }
 .arrow { font-family: var(--mono); color: var(--on-plate-soft); transition: transform .15s; }
 .email {
   display: flex; flex-wrap: nowrap; align-items: center; justify-content: space-between; gap: 0.5rem 1rem;
-  padding-block: 0.7rem;
+  padding-block: 0;
 }
 .email-addr { font-family: var(--mono); font-size: 0.875rem; color: var(--on-plate); text-decoration: none; user-select: all; overflow-wrap: anywhere; min-width: 0; }
+.contact .email-addr { padding-block: 0.75rem; }
 .copy-btn {
   font: 500 var(--fs-xs)/1 var(--mono); letter-spacing: 0.06em; text-transform: uppercase;
   color: var(--plate); background: var(--on-plate);
   border: 0; border-radius: 999px; padding: 0.5rem 0.85rem; cursor: pointer;
-  min-width: 5.5rem; flex: none;
+  min-width: 5.5rem; flex: none; position: relative;
 }
 .copy-btn:hover { background: var(--on-plate-soft); }
 
@@ -180,6 +189,7 @@ main section {
   scroll-margin-top: 1rem;
 }
 main section:first-child { border-top: 0; }
+main:focus { outline: none; }
 @media (min-width: 900px) {
   main section { grid-template-columns: minmax(0, 3fr) minmax(0, 9fr); gap: 3rem; }
   .sec-head { position: sticky; top: calc(env(safe-area-inset-top, 0px) + 1.5rem); align-self: start; }
@@ -220,7 +230,7 @@ main section:first-child { border-top: 0; }
   position: absolute; bottom: 0.25rem;
   left: calc((var(--y) - var(--y0)) / var(--span) * 100%);
   padding-left: 4px;
-  font-family: var(--mono); font-size: 0.75rem; color: var(--ink-soft); font-variant-numeric: tabular-nums;
+  font-family: var(--mono); font-size: var(--fs-xs); color: var(--ink-soft); font-variant-numeric: tabular-nums;
 }
 .yr.odd { display: none; }
 
@@ -263,7 +273,7 @@ main section:first-child { border-top: 0; }
 .now-lab {
   position: absolute; top: 0.3rem; right: calc(100% - (var(--now) - var(--y0)) / var(--span) * 100%);
   padding-right: 6px; white-space: nowrap;
-  font-family: var(--mono); font-size: 0.75rem; color: var(--cobalt);
+  font-family: var(--mono); font-size: var(--fs-xs); color: var(--cobalt);
 }
 .axis.bottom .track { min-height: 1.75rem; }
 
@@ -364,17 +374,51 @@ main section:first-child { border-top: 0; }
 .langs .han { font-style: normal; }
 .colophon { display: grid; gap: 0.6rem; font-family: var(--sans); font-size: var(--fs-s); color: var(--on-plate-soft); }
 
+/* ---------- Skip link, back to top ---------- */
+.skip {
+  position: absolute; left: 16px; top: -100px; z-index: 10;
+  font-family: var(--sans); font-size: var(--fs-ui);
+  background: var(--on-plate); color: var(--plate); padding: 0.75rem 1rem; border-radius: 3px;
+}
+.skip:focus { top: 12px; }
+.to-top { display: inline-block; padding-block: 0.7rem; }
+
+/* ---------- Print ---------- */
+@media print {
+  :root, :root[data-theme="dark"] {
+    --ground: #fff; --ink: #000; --cobalt: #1D2E94; --ink-soft: #333; --line: #bbb; --tint: #f2f2f2;
+    --plate: #fff; --on-plate: #000; --on-plate-soft: #333; --plate-line: #bbb;
+    color-scheme: light;
+  }
+  body { font-size: 11pt; }
+  .skip, .mast-top, .copy-btn, .to-top, .arrow, .now-line, .now-lab { display: none !important; }
+  .name { font-size: 36pt; margin-top: 0; }
+  .mast-grid, main section, .foot { padding-block: 12pt; }
+  .sec-head { position: static; }
+  .contact a[href^="http"]::after, .prose a[href^="http"]::after, .pub a[href^="http"]::after { content: " (" attr(href) ")"; font-size: 9pt; }
+  .contact a[href$=".pdf"]::after { content: " (https://yihao-liu.com/" attr(href) ")"; font-size: 9pt; }
+  .project, .pub, .row { break-inside: avoid; }
+  a { color: inherit; text-decoration: none; }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { transition: none !important; animation: none !important; }
 }
 </style>
 <meta property="og:type" content="profile">
-<meta property="og:title" content="Yihao Liu">
+<meta property="og:site_name" content="Yihao Liu">
+<meta property="og:title" content="Yihao Liu | Health data science, Imperial College London">
 <meta property="og:description" content="Yihao Liu, MSc student and visiting researcher at Imperial College London, working on multimorbidity, prescription data and mortality risk.">
 <meta property="og:url" content="https://yihao-liu.com/">
-<meta name="twitter:card" content="summary">
+<meta property="og:image" content="https://yihao-liu.com/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Yihao Liu. Multimorbidity, survival analysis and risk prediction using routinely collected health data. School of Public Health, Imperial College London.">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="canonical" href="https://yihao-liu.com/">
+<link rel="icon" href="favicon.ico" sizes="48x48">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -382,18 +426,21 @@ main section:first-child { border-top: 0; }
   "name": "Yihao Liu",
   "url": "https://yihao-liu.com/",
   "email": "mailto:yihao.liu@imperial.ac.uk",
+  "jobTitle": "MSc student and visiting researcher",
+  "description": "Yihao Liu, MSc student and visiting researcher at Imperial College London, working on multimorbidity, prescription data and mortality risk.",
   "affiliation": {
-    "@type": "CollegeOrUniversity",
-    "name": "Imperial College London"
+    "@type": "Organization",
+    "name": "Department of Epidemiology and Biostatistics, School of Public Health",
+    "parentOrganization": {
+      "@type": "CollegeOrUniversity",
+      "name": "Imperial College London",
+      "url": "https://www.imperial.ac.uk/"
+    }
   },
   "alumniOf": [
     {
       "@type": "CollegeOrUniversity",
       "name": "École Polytechnique"
-    },
-    {
-      "@type": "CollegeOrUniversity",
-      "name": "King's College London"
     }
   ],
   "knowsAbout": [
@@ -421,7 +468,9 @@ main section:first-child { border-top: 0; }
 </head>
 <body>
 
-<header class="plate">
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="plate" id="top">
   <div class="wrap">
     <div class="mast-top">
       <nav class="mast-nav" aria-label="Sections">
@@ -444,7 +493,7 @@ main section:first-child { border-top: 0; }
         <li><a href="https://scholar.google.com/citations?user=jnAepbcAAAAJ" target="_blank" rel="noopener">Google Scholar <span class="arrow" aria-hidden="true">↗</span></a></li>
         <li><a href="https://github.com/liuy7713" target="_blank" rel="noopener">GitHub <span class="arrow" aria-hidden="true">↗</span></a></li>
         <li><a href="https://www.linkedin.com/in/yihao-liu/" target="_blank" rel="noopener">LinkedIn <span class="arrow" aria-hidden="true">↗</span></a></li>
-        <li><a href="cv.pdf" target="_blank" rel="noopener">CV (PDF) <span class="arrow" aria-hidden="true">↗</span></a></li>
+        <li><a href="Yihao-Liu-CV.pdf" target="_blank" rel="noopener">CV (PDF) <span class="arrow" aria-hidden="true">↗</span></a></li>
         <li class="email">
           <a class="email-addr" id="email-addr" href="mailto:yihao.liu@imperial.ac.uk">yihao.liu@imperial.ac.uk</a>
           <button type="button" class="copy-btn" id="copy-btn" aria-describedby="email-addr">Copy</button>
@@ -454,14 +503,14 @@ main section:first-child { border-top: 0; }
   </div>
 </header>
 
-<main class="wrap">
+<main class="wrap" id="main" tabindex="-1">
   <section id="about" aria-labelledby="h-about">
     <div class="sec-head"><h2 id="h-about">About</h2></div>
     <div class="sec-body">
       <div class="prose">
         <p>I am an MSc student in Health Data Analytics and Machine Learning at Imperial College London, funded by a School of Public Health Masters Scholarship. Since October 2025 I have also been a visiting researcher in the Department of Epidemiology and Biostatistics, supervised by Prof. Marc Chadeau-Hyam and Dr Dragana Vuckovic. There I am developing a multimorbidity index from UK Biobank prescription records to predict all-cause mortality.</p>
         <p>I hold a BSc in Mathematics and Computer Science from École Polytechnique (2026, cum laude), which included an exchange semester at King’s College London. In summer 2025 I was a research intern at King’s, working on quality assurance for fluoroscopy.</p>
-        <p>Languages: English, French, Mandarin, Portuguese.</p>
+        <p>Languages: English, Mandarin, Portuguese, French.</p>
       </div>
 
       <figure class="path" id="path" aria-labelledby="path-title">
@@ -506,7 +555,7 @@ main section:first-child { border-top: 0; }
             <div class="track" aria-hidden="true"><span class="bar" style="--s:2025.5;--e:2025.67;--i:2"></span><span class="now-line"></span></div>
           </div>
           <div class="row">
-            <p class="lab"><b>King’s College London</b>, exchange semester <span class="meta">2025–2026</span></p>
+            <p class="lab"><b>King’s College London</b>, exchange semester <span class="meta">Sep 2025–Jan 2026</span></p>
             <div class="track" aria-hidden="true"><span class="bar" style="--s:2025.67;--e:2026.08;--i:3"></span><span class="now-line"></span></div>
           </div>
           <div class="row">
@@ -558,7 +607,7 @@ main section:first-child { border-top: 0; }
         <h3 id="h-xray">Automated spatial‑resolution measurement for fluoroscopy quality assurance</h3>
         <div class="prose">
           <p>Routine quality assurance of fluoroscopy systems includes imaging a resolution test phantom and reading the system’s limiting spatial resolution by eye, which is slow and varies between observers.</p>
-          <p>I wrote a MATLAB pipeline that automates this reading for the Leeds TOR 18FG phantom, at about one second per image. Its estimates of limiting resolution were about 50% higher in line pairs per millimetre (lp/mm) than observers’ visual readings. They were checked against measurements made in ImageJ.</p>
+          <p>I wrote a MATLAB pipeline that automates this reading for the Leeds TOR 18FG phantom, at about one second per image. Its estimates of limiting resolution were about 50% higher in line pairs per millimetre (lp/mm) than observers’ visual readings: it placed the limit at finer bar groups than observers reported by eye. They were checked against measurements made in ImageJ.</p>
         </div>
         <ol class="steps" aria-label="Pipeline">
           <li><b>Input</b><span>DICOM images, preprocessed before analysis</span></li>
@@ -584,6 +633,7 @@ main section:first-child { border-top: 0; }
             <p class="pub-venue"><i>Front Med (Lausanne).</i> 2025;12:1532195.</p>
             <div class="pub-foot">
               <a class="doi" href="https://doi.org/10.3389/fmed.2025.1532195" target="_blank" rel="noopener">doi:10.3389/fmed.2025.1532195</a>
+              <a href="https://www.frontiersin.org/journals/medicine/articles/10.3389/fmed.2025.1532195/pdf" target="_blank" rel="noopener">Open-access PDF</a>
             </div>
           </div>
         </li>
@@ -618,6 +668,7 @@ main section:first-child { border-top: 0; }
       <p><a href="mailto:yihao.liu@imperial.ac.uk">yihao.liu@imperial.ac.uk</a></p>
       <p>Last updated November 2026</p>
       <p>© <span id="year">2026</span> Yihao Liu</p>
+      <p><a class="to-top" href="#top">Back to top</a></p>
     </div>
   </div>
 </footer>
